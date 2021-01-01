@@ -1,14 +1,9 @@
-from django.contrib.auth.models import User, Group
 from rest_framework import serializers
+from .models import NutData
+from nutfood.models import NutData
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class NutDataSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'groups']
-
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Group
-        fields = ['url', 'name']
+        model = NutData
+        fields = '__all__'
