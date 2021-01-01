@@ -32,6 +32,8 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'corsheaders',
+    'dietrecord.apps.DietrecordConfig',
+    'users.apps.UsersConfig',
     'nutfood.apps.NutfoodConfig',
     'django.contrib.admin',
     'django.contrib.auth',
