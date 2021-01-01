@@ -18,7 +18,7 @@ class OwnPagination(PageNumberPagination):
 
 @api_view(["GET"])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated]) 
 def food_of_nut_search(request):
     paginator = OwnPagination()
     pd_name = request.GET.get("pd_name", None)
