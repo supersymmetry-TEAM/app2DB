@@ -2,19 +2,23 @@ from rest_framework.views import APIView
 from rest_framework.pagination import PageNumberPagination
 from .models import NutData
 from nutfood.serializers import NutDataSerializer
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import filters
 from rest_framework.response import Response
 from django.db.models import Count
 from nutfood.models import NutData
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.permissions import IsAdminUser, AllowAny
 class OwnPagination(PageNumberPagination):
     page_size = 20
+
 @api_view(["GET"])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+@permission_classes([IsAuthenticated])
 def food_of_nut_search(request):
     paginator = OwnPagination()
     pd_name = request.GET.get("pd_name", None)

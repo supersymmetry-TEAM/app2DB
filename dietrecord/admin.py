@@ -1,3 +1,8 @@
 from django.contrib import admin
+from dietrecord.models import DietRecord
 
-# Register your models here.
+class DietRecordAdmin(admin.ModelAdmin):
+    exclude = ()
+    search_fields = ('user',)
+
+admin.site.register(DietRecord, DietRecordAdmin)
