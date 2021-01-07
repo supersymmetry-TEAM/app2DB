@@ -52,4 +52,4 @@ class UsersViewSet(ModelViewSet):
             )
             return Response(data={"token": encoded_jwt, "id": user.pk})
         else:
-            return Response(data={"user":user})
+            return Response(data={"user":user, "username":username,"password":password })
