@@ -52,4 +52,4 @@ class UsersViewSet(ModelViewSet):
             )
             return Response(data={"token": encoded_jwt, "id": user.pk})
         else:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(data={"user":user})
