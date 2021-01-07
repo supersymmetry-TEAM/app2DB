@@ -1,6 +1,6 @@
 from django.db import models
 from nutfood.models import NutData 
-from django.contrib.auth.models import User
+from users.models import User
 
 class DietRecord(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
