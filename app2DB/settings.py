@@ -112,7 +112,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 LANGUAGE_CODE = 'en-us'
 
-
+# Auth
+AUTH_USER_MODEL = "users.User"
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
