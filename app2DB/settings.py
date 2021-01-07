@@ -111,7 +111,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-AUTH_USER_MODEL = 'auth.User'
+AUTH_USER_MODEL = 'auth.models.User'
 
 TIME_ZONE = 'UTC'
 
