@@ -4,6 +4,7 @@ from .models import NutData
 from nutfood.serializers import NutDataSerializer
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
+from app2DB.authentication import JWTAuthentication
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import filters
 from rest_framework.response import Response
@@ -17,7 +18,7 @@ class OwnPagination(PageNumberPagination):
     page_size = 20
 
 @api_view(["GET"])
-@authentication_classes([SessionAuthentication, BasicAuthentication])
+@authentication_classes([SessionAuthentication, JWTAuthentication])
 @permission_classes([IsAuthenticated]) 
 def food_of_nut_search(request):
     paginator = OwnPagination()
