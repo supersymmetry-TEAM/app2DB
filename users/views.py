@@ -39,6 +39,9 @@ class UsersViewSet(ModelViewSet):
         return [permission() for permission in permission_classes]
   
 
+    
+    
+    
     @action(detail=False, methods=["post"])
     def login(self, request):
         username = request.data.get("username")
@@ -53,3 +56,15 @@ class UsersViewSet(ModelViewSet):
             return Response(data={"token": encoded_jwt, "id": user.pk})
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+    @action(detail=False, methods=["post"])
+    def change_password(self, request):
+        newpassword = request.data.get("newpassword")
+        userid = int(request.data.get("userid"))
+        try:
+            u = User.objects.get(pk=userid)
+            u.set_password(newpassword)
+            u.save()
+            return Response(status=status.HTTP_200_OK)
+        except ValueError:
+            return Response({"messege":"something wrong"})
